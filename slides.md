@@ -191,7 +191,7 @@ layout: center
 
   ###### /services/BUILD
 
-  ```python{all|2}
+  ```python {all|2}
   scala_library(
     name = "services",
     srcs = glob(["main/**/*.scala"]),
@@ -201,7 +201,7 @@ layout: center
 
   ###### /api/BUILD
 
-  ```python{all|5}
+  ```python {all|5}
   scala_image(
     name = "api",
     srcs = glob(["main/**/*.scala"]),
