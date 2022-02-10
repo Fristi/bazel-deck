@@ -114,12 +114,16 @@ layout: center
 
 # Reproducible
 
+<v-clicks>
+
 - To achieve reproducible builds you need stable inputs like
   - Scala compiler version (2.12, 2.13, 3.x)
   - External JVM dependencies (e.g.: junit 3.1.1)
   - Source files
 - From these inputs a reproducible hash is calculated and used for caching
 - Test results are also cachable if the inputs don't change
+
+</v-clicks>
 
 ---
 
@@ -168,6 +172,8 @@ layout: center
 
   ## Typical target settings
 
+  <v-clicks>
+
   - Name
   - Dependencies
     - External like `@maven//:dev_zio_zio_2_13`
@@ -175,6 +181,8 @@ layout: center
   - Source files
   - Other settings specific to the target
   - By defining targets you construct your _build graph_
+
+  </v-clicks>
 
   </div>
 
@@ -260,23 +268,33 @@ layout: center
 
 ---
 
-# rules_scala short comings
+# rules_scala shortcomings
+
+<v-clicks>
 
 - You can setup the Scala toolchain in your `WORKSPACE` file
 - Multiple scala versions at the same time is _not_ possible
 - Does _not_ work with Scala 3.x
 - Experimental settings are needed to achieve transitive dependency inheritance
 
+</v-clicks>
+
 ---
 
 ## Transitive dependency inheritance
+
+<v-click>
 
 Multi-modulle project with
 
 - core (depends on external JVM dependency `typelevel/cats-core`)
 - services (depends on internal `core`)
 
-The compiler will crash with _default_ settings due *classpath issues*
+The compiler will crash at `services` with _default_ settings due *classpath issues*
+
+</v-click>
+
+<v-click>
 
 ### Fix
 
@@ -287,9 +305,12 @@ Setup the Scala toolchain with
 
 The docs however state that these options are _experimental_
 
+</v-click>
+
 ---
 
 ## External JVM dependencies
+
 
 Rules for JVM external dependencies
 
@@ -308,15 +329,19 @@ Rules for JVM external dependencies
 
 # Conclusion
 
+<v-clicks>
+
 - Bazel shows potential in being a build tool for mono repos
-- Organizations usually have a _build_ team
-  - Migrate existing builds
+- Organizations like Stripe, Pinterest and such usually have a _build_ team
+  - Migrate existing builds in stages
   - Support for tooling
   - Support for new use-cases
 - For _Scala_ you need to commit to
   - Specific version of the compiler
   - Dare to work with experimental settings
   - A fixed set of dependencies
+
+</v-clicks>
 
 ---
 layout: center
