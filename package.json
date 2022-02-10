@@ -1,9 +1,7 @@
 {
-  "private": true,
   "scripts": {
     "dev": "slidev",
-    "build": "slidev build --base . --out dist",
-    "export": "slidev export --output ../slides.pdf"
+    "build": "slidev build --base /bazel-deck"
   },
   "dependencies": {
     "@slidev/cli": "^0.28.5",
