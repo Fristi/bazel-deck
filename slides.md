@@ -1,5 +1,6 @@
 ---
 layout: cover
+theme: purplin
 highlighter: shiki
 colorSchema: light
 ---
@@ -10,10 +11,6 @@ colorSchema: light
 How does it work and the current state
 </p>
 
-<div class="uppercase tracking-widest" m="t-10">
-Mark de Jong
-</div>
-
 <div class="abs-br mx-14 my-12 flex">
   <!-- <logos:vue text="3xl"/> -->
   <div class="ml-3 flex flex-col text-left gap-1">
@@ -21,6 +18,18 @@ Mark de Jong
     <div class="text-sm opacity-50">16 February 2022</div>
   </div>
 </div>
+
+<BarBottom  title="Bazel for Scala">
+  <Item text="Fristi/bazel-deck">
+    <carbon:logo-github />
+  </Item>
+  <Item text="">
+    <img
+      src="https://vectos.net/assets/img/logo.png"
+      class="w-16"
+    />
+  </Item>
+</BarBottom>
 
 ---
 layout: 'intro'
@@ -35,6 +44,18 @@ Company site: <a href="https://vectos.net" target="_blank">Vectos</a>.<br>
 </div>
 
 <img src="https://vectos.net/assets/img/mark.jpg" class="rounded-full w-40 abs-tr mt-30 mr-20"/>
+
+<BarBottom  title="Bazel for Scala">
+  <Item text="Fristi/bazel-deck">
+    <carbon:logo-github />
+  </Item>
+  <Item text="">
+    <img
+      src="https://vectos.net/assets/img/logo.png"
+      class="w-16"
+    />
+  </Item>
+</BarBottom>
 
 ---
 layout: center
@@ -311,9 +332,9 @@ Pick your poison
 
 | Name | Format | Multi-version | Scala-steward | Maintainer | Active
 | -- | -- | -- | -- | -- | --
-| bazel-deps | YML | No | No | Stripe | No
-| rules_jvm_external | Starlak | No | No | Bazel | Yes
-| bazel_multiversion | YML or Starlak | Yes | No | Twitter | Yes
+| bazel-deps | YML | ❌ | ❌ | Stripe | ❌
+| rules_jvm_external | Starlak | ❌ | ❌ | Bazel | ✅
+| bazel_multiversion | YML or Starlak | ✅ | ❌ | Twitter | ✅
 
 
 ---
