@@ -31,11 +31,7 @@ layout: 'intro'
 <div class="leading-8 opacity-80">
 Functional Programming 🥑<br>
 Freelance full-stack developer at DHL<br>
-Working at <a href="https://vectos.net" target="_blank">Vectos</a>.<br>
-</div>
-
-<div class="my-10 grid grid-cols-[40px,1fr] w-min gap-y-4">
-  <div><a href="https://github.com/Fristi" target="_blank">Fristi</a></div>
+Company site: <a href="https://vectos.net" target="_blank">Vectos</a>.<br>
 </div>
 
 <img src="https://vectos.net/assets/img/mark.jpg" class="rounded-full w-40 abs-tr mt-30 mr-20"/>
@@ -198,24 +194,24 @@ layout: center
 
   ###### /services/BUILD
 
-  ```python {all|2}
-  scala_library(
-    name = "services",
-    srcs = glob(["main/**/*.scala"]),
-    deps = ["@maven//:dev_zio_zio_2_13"]
-  )
-  ```
+```python {all|2}
+scala_library(
+  name = "services",
+  srcs = glob(["main/**/*.scala"]),
+  deps = ["@maven//:dev_zio_zio_2_13"]
+)
+```
 
   ###### /api/BUILD
 
-  ```python {all|5}
-  scala_image(
-    name = "api",
-    srcs = glob(["main/**/*.scala"]),
-    main_class = "Hello",
-    deps = ["//services"]
-  )
-  ```
+```python {all|5}
+scala_image(
+  name = "api",
+  srcs = glob(["main/**/*.scala"]),
+  main_class = "Hello",
+  deps = ["//services"]
+)
+```
 
   </div>
 
@@ -285,7 +281,7 @@ layout: center
 
 <v-click>
 
-Multi-modulle project with
+Multi-module project with
 
 - core (depends on external JVM dependency `typelevel/cats-core`)
 - services (depends on internal `core`)
@@ -311,18 +307,13 @@ The docs however state that these options are _experimental_
 
 ## External JVM dependencies
 
+Pick your poison
 
-Rules for JVM external dependencies
-
-- No scala-steward support
-- Most of them don't support multiple versions
-
-
-| Name | Format | Multi-version | Scala-steward
-| -- | -- | -- | --
-| bazel-deps | YML | No | No
-| rules_jvm_external | Starlak | No | No
-| bazel_multiversion | YML or Starlak | Yes | No
+| Name | Format | Multi-version | Scala-steward | Maintainer | Active
+| -- | -- | -- | -- | -- | --
+| bazel-deps | YML | No | No | Stripe | No
+| rules_jvm_external | Starlak | No | No | Bazel | Yes
+| bazel_multiversion | YML or Starlak | Yes | No | Twitter | Yes
 
 
 ---
@@ -349,3 +340,5 @@ class: 'text-center pb-5'
 ---
 
 # Thank You!
+
+[https://github.com/Fristi/bazel-deck](https://github.com/Fristi/bazel-deck)
