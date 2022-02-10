@@ -35,7 +35,6 @@ Working at <a href="https://vectos.net" target="_blank">Vectos</a>.<br>
 </div>
 
 <div class="my-10 grid grid-cols-[40px,1fr] w-min gap-y-4">
-  <ri-github-line class="opacity-50"/>
   <div><a href="https://github.com/Fristi" target="_blank">Fristi</a></div>
 </div>
 
