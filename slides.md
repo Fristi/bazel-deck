@@ -8,7 +8,7 @@ colorSchema: light
 # Bazel for Scala
 
 <p text="2xl" class="!leading-8">
-How does it work and the current state
+How does it work (with Scala)?
 </p>
 
 <div class="abs-br mx-14 my-12 flex">
@@ -71,22 +71,23 @@ layout: center
 
 ---
 
-# Why would you?
-
-###### Mono repo
+# Why would you want Bazel?
 
 <v-clicks>
 
-- Pull requests in one place
-- Protocol definitions are in sync
-- Decreased processing time
 - One language for builds
+- Mono repo
+  - Pull requests in one place
+  - Protocol definitions are in sync
+  - Decreased processing time
+- Decreased build times and resource utilization
+- Maybe a replacement as SBT or next to it, up to you 😄 
 
 </v-clicks>
 
 ---
 
-# Unique selling points
+# Bazel - Unique selling points
 
 <div grid="~ cols-2" class="gap-10">
 
@@ -136,7 +137,7 @@ layout: center
 - To achieve reproducible builds you need stable inputs like
   - Scala compiler version (2.12, 2.13, 3.x)
   - External JVM dependencies (e.g.: junit 3.1.1)
-  - Source files
+  - Your own source files
 - From these inputs a reproducible hash is calculated and used for caching
 - Test results are also cachable if the inputs don't change
 
@@ -150,10 +151,10 @@ layout: center
 <div grid="~ cols-2" class="gap-5">
 
   - For every repo there is _one_ `WORKSPACE` file which defines inputs
+    - Inputs with pinned versions like  
+      - Scala compiler
+      - JVM deps
     - These inputs are the same for _all_ targets
-    - Inputs like  
-        - Scala compiler
-        - JVM deps
   - Each directory could have a `BUILD` file with one or multiple *targets*  
 
   <img src="/graph-01.png" w="150">
@@ -250,15 +251,14 @@ scala_image(
   <div>
 
   ###### Setup
-  - Server/client model (local/GHA)
+  - Server/client model
   - Clients have a local cache
-  - The build graph is constructed at the server
 
   <v-click>
 
   ###### What do we get?
   - Targets can be build in parallel
-  - Read/write from cache (*Remote cache*)
+  - Read/write target results from cache (*Remote cache*)
   - Targets can run distributed (*Remote Execution*)
 
   </v-click>
@@ -285,20 +285,36 @@ layout: center
 
 ---
 
-# rules_scala shortcomings
+# rules_scala
 
 <v-clicks>
 
+### Features
+
+- Support for building
+  - libraries
+  - binaries
+  - tests
+  - thrift libraries
+  - protobuf libraries
+- Coverage support
+
+</v-clicks>
+
+<v-clicks>
+
+### Constraints
+
 - You can setup the Scala toolchain in your `WORKSPACE` file
 - Multiple scala versions at the same time is _not_ possible
-- Does _not_ work with Scala 3.x
+- Does _not_ work with Scala 3.x (yet)
 - Experimental settings are needed to achieve transitive dependency inheritance
 
 </v-clicks>
 
 ---
 
-## Transitive dependency inheritance
+# Transitive dependency inheritance
 
 <v-click>
 
@@ -326,15 +342,14 @@ The docs however state that these options are _experimental_
 
 ---
 
-## External JVM dependencies
-
-Pick your poison
+# External JVM dependencies
 
 | Name | Format | Multi-version | Scala-steward | Maintainer | Active
 | -- | -- | -- | -- | -- | --
-| bazel-deps | YML | ❌ | ❌ | Stripe | ❌
+| bazel-deps | YML | ❌ | ❌ | 1 ex Stripe | ❌
 | rules_jvm_external | Starlak | ❌ | ❌ | Bazel | ✅
 | bazel_multiversion | YML or Starlak | ✅ | ❌ | Twitter | ✅
+
 
 
 ---
@@ -344,6 +359,7 @@ Pick your poison
 <v-clicks>
 
 - Bazel shows potential in being a build tool for mono repos
+- Can offer dramatic decrease in build times and resources
 - Organizations like Stripe, Pinterest and such usually have a _build_ team
   - Migrate existing builds in stages
   - Support for tooling
