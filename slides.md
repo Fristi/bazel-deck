@@ -130,32 +130,15 @@ layout: center
 
 ---
 
-# Achive caching, by reproducibility
-
-<v-clicks>
-
-- To achieve reproducible builds you need stable inputs like
-  - Scala compiler version (2.12, 2.13, 3.x)
-  - External JVM dependencies (e.g.: junit 3.1.1)
-  - Your own source files
-- From these inputs a reproducible hash is calculated and used for caching
-- Test results are also cachable if the inputs don't change
-
-</v-clicks>
-
----
-
 
 # Describe your graph as targets
 
+### Two types of files
+
 <div grid="~ cols-2" class="gap-5">
 
-  - For every repo there is _one_ `WORKSPACE` file which defines inputs
-    - Inputs with pinned versions like  
-      - Scala compiler
-      - JVM deps
-    - These inputs are the same for _all_ targets
-  - Each directory could have a `BUILD` file with one or multiple *targets*  
+  - `WORKSPACE` - defines global inputs like the Scala compiler and JVM deps.
+  - `BUILD` - Use the global inputs to construct targets and connect them to form a graph
 
   <img src="/graph-01.png" w="150">
 
@@ -166,11 +149,12 @@ layout: center
 
 # Define a `WORKSPACE`
 
-- You can import existing _rules_ like
-  - Scala
-  - Typescript
-  - External JVM artifacts
-  - Docker
+- For every repo there is _one_ `WORKSPACE` file which defines  global inputs with _rules_
+    - Global inputs with pinned versions like  
+      - Scala compiler
+      - Typescript
+      - JVM deps
+    - These global inputs are the same for _all_ targets
 
 ---
 
@@ -198,6 +182,7 @@ layout: center
     - Internal like `//core/:library`
   - Source files
   - Other settings specific to the target
+  - You use global inputs like the Scala compiler and JVM deps
   - By defining targets you construct your _build graph_
 
   </v-clicks>
@@ -241,6 +226,21 @@ scala_image(
   
   
 </div>
+
+---
+
+# Achieve caching, by reproducibility
+
+<v-clicks>
+
+- To achieve reproducible builds you need stable inputs like
+  - Scala compiler version (2.12, 2.13, 3.x)
+  - External JVM dependencies (e.g.: junit 3.1.1)
+  - Your own source files
+- From these inputs a reproducible hash is calculated for your _target_ and used for caching
+- Test results are also cachable if the inputs don't change
+
+</v-clicks>
 
 ---
 
