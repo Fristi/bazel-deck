@@ -130,7 +130,7 @@ layout: center
 
 ---
 
-# Reproducible
+# Achive caching, by reproducibility
 
 <v-clicks>
 
@@ -342,9 +342,9 @@ The docs however state that these options are _experimental_
 
 ---
 
-# External JVM dependencies
+# Rules for external JVM dependencies
 
-| Name | Format | Multi-version | Scala-steward | Maintainer | Active
+| Rule | Format | Multi-version | Scala-steward | Maintainer | Active
 | -- | -- | -- | -- | -- | --
 | bazel-deps | YML | ❌ | ❌ | 1 ex Stripe | ❌
 | rules_jvm_external | Starlak | ❌ | ❌ | Bazel | ✅
