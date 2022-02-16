@@ -81,6 +81,8 @@ layout: center
   - Protocol definitions are in sync
   - Decreased processing time
 - Decreased build times and resource utilization
+  - Only build what has changed
+  - Only test what changed (decrease integration test resource util)
 - Maybe a replacement as SBT or next to it, up to you 😄 
 
 </v-clicks>
@@ -152,7 +154,8 @@ layout: center
 - For every repo there is _one_ `WORKSPACE` file which defines  global inputs with _rules_
     - Global inputs with pinned versions like  
       - Scala compiler
-      - Typescript
+      - Typescript compier
+      - NPM deps
       - JVM deps
     - These global inputs are the same for _all_ targets
 
